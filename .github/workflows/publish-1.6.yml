@@ -14,7 +14,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "17"
-      - uses: gradle/wrapper-validation-action@v4
+      - uses: gradle/wrapper-validation-action@v2
       - run: cd test-mod && ./gradlew build
       - run: ./gradlew build publish --stacktrace
         env:
