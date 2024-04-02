@@ -65,8 +65,8 @@ java {
 
 gradlePlugin {
     plugins {
-        babricLoom {
-            id = 'babric-loom'
+        babricLoomExtension {
+            id = 'babric-loom-extension'
             implementationClass = 'babric.BabricLoomPlugin'
         }
     }
@@ -89,8 +89,8 @@ publishing {
 
         // Manually crate the plugin marker for snapshot versions
         snapshotPlugin(MavenPublication) { publication ->
-            groupId 'babric-loom'
-            artifactId 'babric-loom.gradle.plugin'
+            groupId 'babric-loom-extension'
+            artifactId 'babric-loom-extension.gradle.plugin'
             version baseVersion + '-SNAPSHOT'
 
             pom.withXml({
