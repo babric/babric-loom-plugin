@@ -102,7 +102,7 @@ publishing {
                 Node groupId = dependency.appendChild(document.createElement('groupId'))
                 groupId.setTextContent('babric')
                 Node artifactId = dependency.appendChild(document.createElement('artifactId'))
-                artifactId.setTextContent('babric-loom')
+                artifactId.setTextContent('babric-loom-extension')
                 Node version = dependency.appendChild(document.createElement('version'))
                 version.setTextContent(baseVersion + '-SNAPSHOT')
             })
