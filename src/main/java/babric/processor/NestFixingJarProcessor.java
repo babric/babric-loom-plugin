@@ -6,6 +6,7 @@ import net.fabricmc.loom.api.processor.SpecContext;
 import net.fabricmc.stitch.commands.CommandFixNesting;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -18,7 +19,12 @@ public class NestFixingJarProcessor implements MinecraftJarProcessor<NestFixingJ
 
     @Override
     public void processJar(Path path, Spec spec, ProcessorContext processorContext) throws IOException {
-        CommandFixNesting.run(path.toFile());
+        File file = path.getParent().resolve(".fixedNest").toFile();
+
+        if (!file.exists()) {
+            CommandFixNesting.run(path.toFile());
+            file.createNewFile();
+        }
     }
 
     @Override
