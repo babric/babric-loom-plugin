@@ -1,3 +1,7 @@
+/**
+Swiped from https://github.com/Legacy-Fabric/legacy-looming/blob/dev/1.7/src/main/java/net/legacyfabric/legacylooming/LegacyRepositoryHandler.java with permission.
+**/
+
 package babric;
 
 import org.gradle.api.Plugin;
