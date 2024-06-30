@@ -26,8 +26,6 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
     private void applyProject(Project project) {
         project.getLogger().lifecycle("Babric loom: " + VERSION);
 
-//        BabricRepositoryHandler.declareRepositories(project.getRepositories());
-
         LoomGradleExtension.get(project).getLibraryProcessors().add(LWJGL2LibraryProcessor::new);
 
         LoomGradleExtensionAPI extension = (LoomGradleExtensionAPI) project.getExtensions().getByName("loom");
