@@ -1,3 +1,7 @@
+/**
+Swiped from https://github.com/Legacy-Fabric/legacy-looming/blob/dev/1.7/src/main/java/net/legacyfabric/legacylooming/providers/LWJGL2LibraryProcessor.java with permission.
+**/
+
 package babric.processor;
 
 import net.fabricmc.loom.configuration.providers.minecraft.library.Library;
