@@ -5,7 +5,6 @@ Swiped from https://github.com/Legacy-Fabric/legacy-looming/blob/dev/1.7/src/mai
 package babric.processor;
 
 import babric.BabricExtension;
-import net.fabricmc.loom.LoomGradleExtension;
 import net.fabricmc.loom.api.LoomGradleExtensionAPI;
 import net.fabricmc.loom.configuration.providers.minecraft.library.Library;
 import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryContext;

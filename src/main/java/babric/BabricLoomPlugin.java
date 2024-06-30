@@ -6,7 +6,6 @@ import babric.processor.LWJGL2LibraryProcessor;
 import babric.processor.NestFixingJarProcessor;
 import net.fabricmc.loom.LoomGradleExtension;
 import net.fabricmc.loom.api.LoomGradleExtensionAPI;
-import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryProcessor;
 import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryProcessorManager;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
