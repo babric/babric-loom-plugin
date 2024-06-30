@@ -18,7 +18,7 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
     @Override
     public void apply(PluginAware target) {
         target.apply(Map.of("plugin", "fabric-loom"));
-        target.getPlugins().apply(LegacyRepositoryHandler.class);
+        target.getPlugins().apply(BabricRepositoryHandler.class);
 
         if (target instanceof Project project) applyProject(project);
     }

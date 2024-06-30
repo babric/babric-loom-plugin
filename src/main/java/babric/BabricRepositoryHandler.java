@@ -12,15 +12,15 @@ import org.gradle.api.invocation.Gradle;
 import org.gradle.api.plugins.PluginAware;
 import org.jetbrains.annotations.NotNull;
 
-public class LegacyRepositoryHandler implements Plugin<PluginAware> {
+public class BabricRepositoryHandler implements Plugin<PluginAware> {
     @Override
     public void apply(@NotNull PluginAware pluginAware) {
         if (pluginAware instanceof Settings settings) {
             declareRepositories(settings.getDependencyResolutionManagement().getRepositories());
 
-            settings.getGradle().getPluginManager().apply(LegacyRepositoryHandler.class);
+            settings.getGradle().getPluginManager().apply(BabricRepositoryHandler.class);
         } else if (pluginAware instanceof Project project) {
-            if (project.getGradle().getPlugins().hasPlugin(LegacyRepositoryHandler.class)) {
+            if (project.getGradle().getPlugins().hasPlugin(BabricRepositoryHandler.class)) {
                 return;
             }
 
@@ -35,12 +35,14 @@ public class LegacyRepositoryHandler implements Plugin<PluginAware> {
     private void declareRepositories(RepositoryHandler repositories) {
         repositories.maven(repo -> {
             repo.setName("Legacy Fabric");
-            repo.setUrl(Constants.MAVEN);
+            repo.setUrl(Constants.LEGACYFABRIC_MAVEN);
             repo.content(content -> {
-                content.includeGroup("net.legacyfabric");
-                content.includeGroupByRegex("net.legacyfabric.*");
-                content.includeGroup("org.lwjgl.lwjgl");
+                content.includeGroup("org.lwjgl.lwjgl"); // Only for LWJGL
             });
+        });
+        repositories.maven(repo -> { // No filter, all parts of this repo are used in a project.
+            repo.setName("Babric");
+            repo.setUrl(Constants.BABRIC_MAVEN);
         });
     }
 }
