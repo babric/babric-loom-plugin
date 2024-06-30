@@ -1,6 +1,7 @@
 package babric;
 
 import babric.mappings.BabricIntermediaryProvider;
+import babric.processor.LWJGL2LibraryProcessor;
 import babric.processor.NestFixingJarProcessor;
 import net.fabricmc.loom.LoomGradleExtension;
 import net.fabricmc.loom.api.LoomGradleExtensionAPI;
@@ -17,6 +18,7 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
     @Override
     public void apply(PluginAware target) {
         target.apply(Map.of("plugin", "fabric-loom"));
+        target.getPlugins().apply(LegacyRepositoryHandler.class);
 
         if (target instanceof Project project) applyProject(project);
     }
@@ -24,7 +26,9 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
     private void applyProject(Project project) {
         project.getLogger().lifecycle("Babric loom: " + VERSION);
 
-        BabricRepositoryHandler.declareRepositories(project.getRepositories());
+//        BabricRepositoryHandler.declareRepositories(project.getRepositories());
+
+        LoomGradleExtension.get(project).getLibraryProcessors().add(LWJGL2LibraryProcessor::new);
 
         LoomGradleExtensionAPI extension = (LoomGradleExtensionAPI) project.getExtensions().getByName("loom");
 

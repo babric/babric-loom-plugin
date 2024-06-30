@@ -5,6 +5,7 @@ import net.fabricmc.loom.api.processor.ProcessorContext;
 import net.fabricmc.loom.api.processor.SpecContext;
 import net.fabricmc.loom.util.fmj.FabricModJson;
 import net.fabricmc.stitch.commands.CommandFixNesting;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -25,7 +26,7 @@ public class NestFixingJarProcessor implements MinecraftJarProcessor<NestFixingJ
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "babric:fix-nesting";
     }
 
