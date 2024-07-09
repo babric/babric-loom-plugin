@@ -7,7 +7,7 @@ plugins {
 
 group = "babric"
 base.archivesName = project.name
-def baseVersion = "1.6"
+def baseVersion = "1.7"
 
 def ENV = System.getenv()
 
@@ -30,7 +30,7 @@ dependencies {
     implementation(gradleApi())
 
     implementation("net.fabricmc:fabric-loom:${baseVersion}-SNAPSHOT")
-    compileOnly("net.fabricmc:mapping-io:0.5.1")
+    compileOnly("net.fabricmc:mapping-io:0.6.1")
     api("babric:stitch:0.6.2-babric.1")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
