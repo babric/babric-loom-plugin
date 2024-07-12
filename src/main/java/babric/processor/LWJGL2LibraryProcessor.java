@@ -50,16 +50,6 @@ public class LWJGL2LibraryProcessor extends LibraryProcessor {
         };
     }
 
-    @Override
-    public void applyRepositories(RepositoryHandler repositories) {
-        repositories.exclusiveContent(repository -> {
-            repository.forRepositories(repositories.findByName("Legacy Fabric"));
-            repository.filter(filter -> {
-                filter.includeGroup("org.lwjgl.lwjgl");
-            });
-        });
-    }
-
     public static String getNativeClassifier() {
         switch (Platform.CURRENT.getOperatingSystem()) {
             case MAC_OS -> {

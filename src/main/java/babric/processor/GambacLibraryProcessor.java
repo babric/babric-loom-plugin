@@ -54,14 +54,4 @@ public class GambacLibraryProcessor extends LibraryProcessor {
 
         return ALLOW_ALL;
     }
-
-    @Override
-    public void applyRepositories(RepositoryHandler repositories) {
-        repositories.exclusiveContent(repository -> {
-            repository.forRepositories(repositories.findByName("Modrinth"));
-            repository.filter(filter -> {
-                filter.includeModule("maven.modrinth", "gambac"); // Allow only gambac, don't let folk rely on this adding MR for them.
-            });
-        });
-    }
 }
