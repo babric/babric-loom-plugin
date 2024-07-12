@@ -49,7 +49,7 @@ public class GambacLibraryProcessor extends LibraryProcessor {
         if (!applied) {
             applied = true;
 
-            dependencyConsumer.accept(Library.fromMaven("maven.modrinth:gambac:" + VERSION, Library.Target.LOCAL_MOD));
+            dependencyConsumer.accept(Library.fromMaven("net.danygames2014:gambac:" + VERSION, Library.Target.LOCAL_MOD));
         }
 
         return ALLOW_ALL;
