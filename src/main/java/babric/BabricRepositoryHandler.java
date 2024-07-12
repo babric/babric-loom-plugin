@@ -44,11 +44,11 @@ public class BabricRepositoryHandler implements Plugin<PluginAware> {
             repo.setName("Babric");
             repo.setUrl(Constants.BABRIC_MAVEN);
         });
-        repositories.maven(repo -> { // No filter, all parts of this repo are used in a project.
+        repositories.maven(repo -> {
             repo.setName("Modrinth");
-            repo.setUrl(Constants.MODRINTH_MAVEN);
+            repo.setUrl(Constants.GLASS_MAVEN);
             repo.content(content -> {
-                content.includeModule("maven.modrinth", "gambac"); // Allow only gambac, don't let folk rely on this adding MR for them.
+                content.includeModule("net.danygames2014", "gambac"); // Allow only gambac, don't let folk rely on this adding MR for them.
             });
         });
     }
