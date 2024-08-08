@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class GambacLibraryProcessor extends LibraryProcessor {
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.1.1";
     private boolean applied = false;
     private final LoomGradleExtensionAPI loom;
     private final Project project;
