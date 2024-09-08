@@ -38,7 +38,7 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
 
         libraryProcessors.add((platform, libraryContext) -> new GambacLibraryProcessor(platform, libraryContext, extension, project, babricExtension));
 
-        extension.getVersionsManifests().add("https://babric.github.io/manifest-polyfill/version_manifest_v2.json", -10);
+        extension.getVersionsManifests().add("babric-manifest", "https://babric.github.io/manifest-polyfill/version_manifest_v2.json", -10);
 
         extension.setIntermediateMappingsProvider(BabricIntermediaryProvider.class, provider -> {
             provider.getIntermediaryUrl().set("https://maven.glass-launcher.net/babric/babric/intermediary/%1$s/intermediary-%1$s-v2.jar");
