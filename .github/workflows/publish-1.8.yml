@@ -1,4 +1,4 @@
-name: Publish 1.7
+name: Publish 1.8
 
 on:
   push:
