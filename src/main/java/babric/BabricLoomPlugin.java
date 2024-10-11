@@ -11,6 +11,7 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.PluginAware;
 import org.gradle.api.provider.ListProperty;
+import org.gradle.internal.os.OperatingSystem;
 
 import java.util.Map;
 import java.util.Objects;
@@ -46,5 +47,16 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
         });
 
         extension.addMinecraftJarProcessor(NestFixingJarProcessor.class);
+
+        project.afterEvaluate(p -> {
+            if (OperatingSystem.current().isMacOsX()) {
+                extension.getRunConfigs().configureEach(runConfig -> {
+                    System.out.println(runConfig);
+                    if (runConfig.getName().equals("client")) {
+                        runConfig.getVmArgs().add("-Dapple.awt.application.appearance=system");
+                    }
+                });
+            }
+        });
     }
 }
