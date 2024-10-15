@@ -51,7 +51,6 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
         project.afterEvaluate(p -> {
             if (OperatingSystem.current().isMacOsX()) {
                 extension.getRunConfigs().configureEach(runConfig -> {
-                    System.out.println(runConfig);
                     if (runConfig.getName().equals("client")) {
                         runConfig.getVmArgs().add("-Dapple.awt.application.appearance=system");
                     }
