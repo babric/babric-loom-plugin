@@ -11,6 +11,7 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.PluginAware;
 import org.gradle.api.provider.ListProperty;
+import org.gradle.internal.os.OperatingSystem;
 
 import java.util.Map;
 import java.util.Objects;
@@ -41,10 +42,20 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
         extension.getVersionsManifests().add("babric-manifest", "https://babric.github.io/manifest-polyfill/version_manifest_v2.json", -10);
 
         extension.setIntermediateMappingsProvider(BabricIntermediaryProvider.class, provider -> {
-            provider.getIntermediaryUrl().set("https://maven.glass-launcher.net/babric/babric/intermediary/%1$s/intermediary-%1$s-v2.jar");
+            provider.getIntermediaryUrl().set("https://maven.glass-launcher.net/babric/babric/intermediary-upstream/%1$s/intermediary-upstream-%1$s-v2.jar");
             provider.getRefreshDeps().set(project.provider(() -> LoomGradleExtension.get(project).refreshDeps()));
         });
 
         extension.addMinecraftJarProcessor(NestFixingJarProcessor.class);
+
+        project.afterEvaluate(p -> {
+            if (OperatingSystem.current().isMacOsX()) {
+                extension.getRunConfigs().configureEach(runConfig -> {
+                    if (runConfig.getName().equals("client")) {
+                        runConfig.getVmArgs().add("-Dapple.awt.application.appearance=system");
+                    }
+                });
+            }
+        });
     }
 }
