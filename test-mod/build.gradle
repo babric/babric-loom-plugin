@@ -13,7 +13,7 @@ base {
 
 babric {
 //	disableM1Fixes.set(true) // Uncomment this to disable gambac (M1 colours fix.)
-	disablePomOverride.set(true) // Uncomment this to disable the pom override that helps simplify dependency management.
+//	disablePomOverride.set(true) // Uncomment this to disable the pom override that helps simplify dependency management.
 }
 
 repositories {
