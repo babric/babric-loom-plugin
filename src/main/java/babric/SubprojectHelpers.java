@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * A utility class which can be used in multi-module builds to neatly tie multi-mod structures together.
+ */
 public class SubprojectHelpers {
 
     /**
