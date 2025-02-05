@@ -40,7 +40,6 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
 
         // Add a transitiveImplementation configuration because gradle has no built-in way to say "don't add this to the pom"
         Configuration transitiveImplementation = project.getConfigurations().create("transitiveImplementation");
-        project.getConfigurations().getByName("implementation").extendsFrom(transitiveImplementation);
 
         ListProperty<LibraryProcessorManager.LibraryProcessorFactory> libraryProcessors = LoomGradleExtension.get(project).getLibraryProcessors();
         libraryProcessors.add(LWJGL2LibraryProcessor::new);
@@ -78,7 +77,7 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
                             Node depsNode = new Node(null, "dependencies");
 
                             // Jank solution to an annoying issue
-                            project.getConfigurations().getByName("transitiveImplementation").getDependencies().forEach(dependency -> {
+                            transitiveImplementation.getDependencies().forEach(dependency -> {
                                 Node depNode = depsNode.appendNode("dependency");
                                 depNode.appendNode("groupId", dependency.getGroup());
                                 depNode.appendNode("artifactId", dependency.getName());

@@ -24,6 +24,20 @@ repositories {
 	// for more information about repositories.
 	maven { url = "https://maven.glass-launcher.net/snapshots" }
 	maven { url = "https://maven.glass-launcher.net/releases" }
+	maven { url = "https://jitpack.io" }
+	maven { url = "https://maven.minecraftforge.net" }
+
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
+	}
 }
 
 dependencies {
@@ -34,6 +48,8 @@ dependencies {
 
 	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
 	transitiveImplementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2"
+
+	transitiveImplementation modImplementation("net.modificationstation:StationAPI:2.0.0-alpha.3") as Dependency
 
 	// This is an example on how to include a mod transitively.
 //	transitiveImplementation(modImplementation("net.glasslauncher.mods:glass-networking:1.0.3") {
