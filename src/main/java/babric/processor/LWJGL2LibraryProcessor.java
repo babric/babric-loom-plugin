@@ -8,7 +8,6 @@ import net.fabricmc.loom.configuration.providers.minecraft.library.Library;
 import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryContext;
 import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryProcessor;
 import net.fabricmc.loom.util.Platform;
-import org.gradle.api.artifacts.dsl.RepositoryHandler;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;

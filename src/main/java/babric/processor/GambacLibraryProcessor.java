@@ -11,7 +11,6 @@ import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryContex
 import net.fabricmc.loom.configuration.providers.minecraft.library.LibraryProcessor;
 import net.fabricmc.loom.util.Platform;
 import org.gradle.api.Project;
-import org.gradle.api.artifacts.dsl.RepositoryHandler;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
