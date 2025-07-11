@@ -1,9 +1,9 @@
-name: Publish 1.10
+name: Publish 1.11
 
 on:
   push:
     branches:
-      - "dev/1.10"
+      - "dev/1.11"
 
 jobs:
   build:
@@ -13,8 +13,8 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "17"
-      - uses: gradle/wrapper-validation-action@v3
+          java-version: "21"
+      - uses: gradle/actions/wrapper-validation@v3
       - run: cd test-mod && ./gradlew build
       - run: cd test-mod && ./gradlew genSourcesWithCfr
       - run: ./gradlew build publish --stacktrace
