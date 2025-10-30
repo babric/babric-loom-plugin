@@ -7,7 +7,7 @@ plugins {
 
 group = "babric"
 base.archivesName = project.name
-def baseVersion = "1.11"
+def baseVersion = "1.12"
 
 def ENV = System.getenv()
 
