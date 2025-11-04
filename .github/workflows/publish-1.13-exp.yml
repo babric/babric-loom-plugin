@@ -1,9 +1,9 @@
-name: Publish 1.12
+name: Publish 1.13 experimental
 
 on:
   push:
     branches:
-      - "dev/1.12"
+      - "exp/1.13"
 
 jobs:
   build:
@@ -17,8 +17,11 @@ jobs:
       - uses: gradle/actions/wrapper-validation@v3
       - run: cd test-mod && ./gradlew build
       - run: cd test-mod && ./gradlew genSourcesWithCfr
+        env:
+          EXPERIMENTAL: true
       - run: ./gradlew build publish --stacktrace
         env:
           MAVEN_URL: ${{ secrets.MAVEN_URL }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          EXPERIMENTAL: true
