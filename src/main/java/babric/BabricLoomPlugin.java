@@ -28,7 +28,7 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
     public void apply(PluginAware target) {
         System.setProperty("fabric.loom.disableMinecraftVerification", "true");
 
-        target.apply(Map.of("plugin", "fabric-loom"));
+        target.apply(Map.of("plugin", "net.fabricmc.fabric-loom-remap"));
         target.getPlugins().apply(BabricRepositoryHandler.class);
 
         if (target instanceof Project project) applyProject(project);

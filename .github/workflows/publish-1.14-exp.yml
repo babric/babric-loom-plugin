@@ -1,9 +1,9 @@
-name: Publish 1.13 experimental
+name: Publish 1.14 experimental
 
 on:
   push:
     branches:
-      - "exp/1.13"
+      - "exp/1.14"
 
 jobs:
   build:
