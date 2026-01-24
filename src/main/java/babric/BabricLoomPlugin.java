@@ -70,29 +70,29 @@ public class BabricLoomPlugin implements Plugin<PluginAware> {
         });
 
         // Wipes the normal pom's dependency block and substitutes in the transitiveImplementation configuration contents.
-        PublishingExtension publishing = project.getExtensions().getByType(PublishingExtension.class);
-        project.afterEvaluate(p -> {
-            if (!babricExtension.disablePomOverride.get()) {
-                publishing.getPublications().forEach(publication -> {
-                    if (publication instanceof MavenPublication mavenPublication) {
-                        mavenPublication.pom(mavenPom -> mavenPom.withXml(xmlProvider -> {
-                            Node depsNode = new Node(null, "dependencies");
-
-                            // Jank solution to an annoying issue
-                            transitiveImplementation.getDependencies().forEach(dependency -> {
-                                Node depNode = depsNode.appendNode("dependency");
-                                depNode.appendNode("groupId", dependency.getGroup());
-                                depNode.appendNode("artifactId", dependency.getName());
-                                depNode.appendNode("version", dependency.getVersion());
-                                depNode.appendNode("scope", "runtime");
-                            });
-
-                            // Replace the dependency block, because it's just hopelessly wrong and includes floader+asm for some reason
-                            ((Node) ((NodeList) xmlProvider.asNode().get("dependencies")).get(0)).replaceNode(depsNode);
-                        }));
-                    }
-                });
-            }
-        });
+//        PublishingExtension publishing = project.getExtensions().getByType(PublishingExtension.class);
+//        project.afterEvaluate(p -> {
+//            if (!babricExtension.disablePomOverride.get()) {
+//                publishing.getPublications().forEach(publication -> {
+//                    if (publication instanceof MavenPublication mavenPublication) {
+//                        mavenPublication.pom(mavenPom -> mavenPom.withXml(xmlProvider -> {
+//                            Node depsNode = new Node(null, "dependencies");
+//
+//                            // Jank solution to an annoying issue
+//                            transitiveImplementation.getDependencies().forEach(dependency -> {
+//                                Node depNode = depsNode.appendNode("dependency");
+//                                depNode.appendNode("groupId", dependency.getGroup());
+//                                depNode.appendNode("artifactId", dependency.getName());
+//                                depNode.appendNode("version", dependency.getVersion());
+//                                depNode.appendNode("scope", "runtime");
+//                            });
+//
+//                            // Replace the dependency block, because it's just hopelessly wrong and includes floader+asm for some reason
+//                            ((Node) ((NodeList) xmlProvider.asNode().get("dependencies")).get(0)).replaceNode(depsNode);
+//                        }));
+//                    }
+//                });
+//            }
+//        });
     }
 }
