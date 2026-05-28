@@ -1,9 +1,9 @@
-name: Publish 1.15 experimental
+name: Publish 1.16
 
 on:
   push:
     branches:
-      - "exp/1.15"
+      - "dev/1.16"
 
 jobs:
   build:
@@ -14,14 +14,11 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "21"
-      - uses: gradle/actions/wrapper-validation@v5
+      - uses: gradle/actions/wrapper-validation@v6
       - run: cd test-mod && ./gradlew build
       - run: cd test-mod && ./gradlew genSourcesWithCfr
-        env:
-          EXPERIMENTAL: true
       - run: ./gradlew build publish --stacktrace
         env:
           MAVEN_URL: ${{ secrets.MAVEN_URL }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          EXPERIMENTAL: true
