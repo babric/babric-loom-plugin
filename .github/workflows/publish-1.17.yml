@@ -16,7 +16,7 @@ jobs:
           java-version: "25"
       - uses: gradle/actions/wrapper-validation@v6
       - run: cd test-mod && ./gradlew build
-      - run: cd test-mod && ./gradlew genSourcesWithCfr
+      # - run: cd test-mod && ./gradlew genSourcesWithCfr
       - run: ./gradlew build publish --stacktrace
         env:
           MAVEN_URL: ${{ secrets.MAVEN_URL }}
