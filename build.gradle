@@ -44,7 +44,7 @@ dependencies {
 
     implementation("net.fabricmc:fabric-loom:${loomVersion}")
     compileOnly("net.fabricmc:mapping-io:0.8.0")
-    api("babric:stitch:0.6.2-babric.1")
+    api("babric:stitch:0.6.2-babric.2")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
