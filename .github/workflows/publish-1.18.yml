@@ -1,27 +1,24 @@
-name: Publish 1.17 experimental
+name: Publish 1.18
 
 on:
   push:
     branches:
-      - "exp/1.17"
+      - "dev/1.18"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-java@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
         with:
           distribution: "temurin"
           java-version: "25"
       - uses: gradle/actions/wrapper-validation@v6
       - run: cd test-mod && ./gradlew build
-      - run: cd test-mod && ./gradlew genSourcesWithCfr
-        env:
-          EXPERIMENTAL: true
+      - run: cd test-mod && ./gradlew genSources
       - run: ./gradlew build publish --stacktrace
         env:
           MAVEN_URL: ${{ secrets.MAVEN_URL }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-          EXPERIMENTAL: true
